@@ -9,6 +9,10 @@ app.get('/data', (req, res) => {
     res.json({message: "Hello From Node-Express Server"});
   });
 
+app.post('/api/state/cache', (req, res) => {
+  console.log("Post Request : ", req.body );
+    return res.status(204).json({ message: "success" });
+  });
 
 app.listen(3004, () => {
     console.log('Listening on Port 3004')
