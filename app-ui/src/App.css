@@ -2,3 +2,14 @@
   text-align: center;
 }
 
+.srd-demo-canvas {
+  height: 98vh;
+  width: 98%;
+  margin: auto;
+  border-radius: 15px;
+  background-color: #0a0a0a !important;
+  background-size: 50px 50px;
+}
+.srd-demo-canvas .pointui {
+  fill: rgba(255, 255, 255, 0.5);
+}

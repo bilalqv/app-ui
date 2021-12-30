@@ -1,9 +1,10 @@
-## Part 2 - Creating Hello world react application + Mockserver
+## Part 3 - Using React Diagrams
 
-Created a branch named init-react-app.
 
-Initialized the react application by using the `npx create-react-app app-ui` command.
+Created a branch named `init-react-diagrams`.
 
-Create a node.js server inside the react app, which acts like a mock server. The mock server starts and stops along with the react app start using the command `npm start`. I used concurrently package for this purpose.
+Used `npm install @projectstorm/react-diagrams` to install `react-diagrams`.
 
-The mock server is a simple express application that returns a response message when request is made at http://localhost:3004/data.
+Created a file named `BasicConnection.jsx` in the application and used it for rendering the component application.
+
+Added some custom css.
