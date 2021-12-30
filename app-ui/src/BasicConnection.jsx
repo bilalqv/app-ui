@@ -1,4 +1,5 @@
 import './App.css';
+import { useEffect  } from 'react';
 import createEngine, { DefaultNodeModel, DiagramModel } from '@projectstorm/react-diagrams';
 import { CanvasWidget } from '@projectstorm/react-canvas-core';
 
@@ -29,6 +30,20 @@ const BasicConnection = () => {
   let models = model.addAll(node1, node2, link);
   engine.setModel(model);
 
+  let nodesData = [];
+  let linksData = [];
+
+  models.forEach((item) => {
+    if (item["position"] !== undefined) {
+      nodesData.push({ id: item.options.id, name: item.options.name });
+    } else {
+      linksData.push({
+        src: item.sourcePort.parent.options.id,
+        dest: item.targetPort.parent.options.id,
+      });
+    }
+  });
+
   node1.registerListener({
     positionChanged: (event)=>{
       console.log( "Source Dragged -", event);
@@ -40,6 +55,21 @@ const BasicConnection = () => {
     console.log( "Destination Dragged -", event);
   } 
   })
+
+  useEffect(() => {
+    fetch('/api/state/cache', {
+        method: 'POST',
+        headers: {"Content-Type" : "application/json"},
+        body: JSON.stringify({ 
+          components: nodesData,
+          links: linksData,
+        })
+    }).then((res) => {
+      console.log("status : ", res.status);
+      })
+    .catch(err => console.log('error : ', err))
+    
+}, []);
 
   return (
   <CanvasWidget className="srd-demo-canvas" engine={engine} />

@@ -1,10 +1,6 @@
-## Part 3 - Using React Diagrams
+## Part 4 - Interacting with Mock App
 
 
-Created a branch named `init-react-diagrams`.
+Created a branch named `service-integration`.
 
-Used `npm install @projectstorm/react-diagrams` to install `react-diagrams`.
-
-Created a file named `BasicConnection.jsx` in the application and used it for rendering the component application.
-
-Added some custom css.
+The application sends the body to the mockserver on localhost:3000/api/state/cache endpoint, which returns response with status 204.
